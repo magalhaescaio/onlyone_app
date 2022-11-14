@@ -1,0 +1,39 @@
+{
+    "project_info": {
+      "project_number": "160815210138",
+      "project_id": "onlyoneapp-8468f",
+      "storage_bucket": "onlyoneapp-8468f.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:160815210138:android:f78360c4fd0d327db2c923",
+          "android_client_info": {
+            "package_name": "com.caio.skywalker.onlyoneapp"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "160815210138-l22gih57nc0sddqno95ncm4v6dqv9584.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyCkcPbsbKHDnPLJEqK58jB2PfemNGzQ4XA"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "160815210138-l22gih57nc0sddqno95ncm4v6dqv9584.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }
