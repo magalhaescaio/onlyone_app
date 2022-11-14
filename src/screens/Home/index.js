@@ -52,7 +52,7 @@ export default function (props) {
     useEffect(() => {
         async function fetchData() {
             setUserData(JSON.parse(await getData('onlyne-application-data')))
-            setAmbients(JSON.parse(await getData('onlyne-application-ambients')))
+            // setAmbients(JSON.parse(await getData('onlyne-application-ambients')))
             setCheckUser(true)
         }
 
@@ -907,8 +907,7 @@ export default function (props) {
                     </View>
                     : <>
                   
-                        {ambients && ambients.length > 0  ? ambients.map((row, index) => {
-
+                        {ambients ? ambients.map((row, index) => {
                             return (
                                 <View
                                     key={index}
