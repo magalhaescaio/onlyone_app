@@ -2,10 +2,11 @@
   "expo": {
     "name": "Only One Aut",
     "slug": "onlyone-app",
-    "version": "1.0.0",
+    "version": "1.0.10",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "runtimeVersion": "2.722",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -28,7 +29,7 @@
         "backgroundColor": "#FFFFFF"
       }, 
       "package": "com.caio.skywalker.onlyoneapp",
-      "versionCode": 7,
+      "versionCode": 8,
       "googleServicesFile": "./google-services.json"
     },
     "web": {

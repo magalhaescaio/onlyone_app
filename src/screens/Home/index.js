@@ -104,9 +104,9 @@ export default function (props) {
             const response = await axios.get(endPoint + '/api/v1/ambients', config)
 
             var array_ambients = []
-            var ambients = response.data.ambient
+            var myambients = response.data.ambient
 
-            ambients.map((row) => {
+            myambients.map((row) => {
                 var array_devices = []
                 var array_painel = []
 
@@ -906,7 +906,8 @@ export default function (props) {
                         </Text>
                     </View>
                     : <>
-                        {ambients.map((row, index) => {
+                  
+                        {ambients && ambients.length > 0  ? ambients.map((row, index) => {
 
                             return (
                                 <View
@@ -1005,7 +1006,7 @@ export default function (props) {
                                     </View>
                                 </View>
                             )
-                        })}
+                        }) : false }
                         {/* <View >
 
                         </View> */}
