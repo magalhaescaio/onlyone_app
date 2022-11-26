@@ -63,7 +63,7 @@ export default function (props) {
                         justifyContent: 'center',
                         alignItems: 'center',
                         backgroundColor: palette.borderGray,
-                        borderRadius: '50%',
+                        borderRadius: 50,
                         opacity: 1
                     }}>
                         <View style={{
@@ -73,7 +73,7 @@ export default function (props) {
                             justifyContent: 'center',
                             alignItems: 'center',
                             backgroundColor: palette.gray,
-                            borderRadius: '50%'
+                            borderRadius: 50
                         }}>
                             <Text style={{ color: palette.white, textTransform: 'uppercase', fontWeight: 'bold', fontSize: 30 }}>
                                 {userData ? userData.name[0] + userData.name[1] : ''}

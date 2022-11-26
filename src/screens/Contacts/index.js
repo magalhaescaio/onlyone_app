@@ -108,7 +108,7 @@ export default function (props) {
                                             <View style={{
                                                 display: 'flex', width: '10%', justifyContent: 'center', alignItems: 'center'
                                             }}>
-                                                <View style={{ height: 35, width: 35, borderRadius: '50%', backgroundColor: palette.darkGray, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                                <View style={{ height: 35, width: 35, borderRadius: 50, backgroundColor: palette.darkGray, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                                     <MaterialCommunityIcons name={'account'} size={20} color={palette.lightGreen} />
                                                 </View>
                                             </View>

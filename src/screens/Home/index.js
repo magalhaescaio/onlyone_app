@@ -51,6 +51,8 @@ export default function (props) {
 
     useEffect(() => {
         async function fetchData() {
+            startAnimation()
+
             setUserData(JSON.parse(await getData('onlyne-application-data')))
             // setAmbients(JSON.parse(await getData('onlyne-application-ambients')))
             setCheckUser(true)
@@ -61,13 +63,13 @@ export default function (props) {
 
     useEffect(() => {
         if (checkUser === true) {
-            if (!ambients) {
-                getDevices(true)
-            } else {
-                setInterval(() => {
-                    getDevices(false)
-                }, 8000)
-            }
+
+            getDevices(true)
+
+            setInterval(() => {
+                getDevices(false)
+            }, 8000)
+
         }
     }, [checkUser])
 
@@ -213,6 +215,7 @@ export default function (props) {
             setAmbients(array_ambients)
             storeData('onlyne-application-ambients', JSON.stringify(array_ambients))
 
+
         } catch (error) {
 
         }
@@ -262,6 +265,7 @@ export default function (props) {
             temp_color = palette.orange
         }
 
+
         return (
             <View>
                 {sinal.status.toString() === '-1'
@@ -302,16 +306,16 @@ export default function (props) {
 
                 {transbordo.status.toString() === '-1'
                     ? <>
-                        <View style={styles.alertBlueOpt}>
+                        <View style={styles.alertRedOpt}>
                             <Blink>
                                 <MaterialCommunityIcons
                                     name={'water-percent-alert'}
                                     size={20}
-                                    color={palette.blue}
+                                    color={palette.orange}
                                 />
                             </Blink>
 
-                            <Text style={{ color: palette.blue, fontWeight: 'bold', marginTop: 3, marginLeft: 5 }}>
+                            <Text style={{ color: palette.orange, fontWeight: 'bold', marginTop: 3, marginLeft: 5 }}>
                                 {transbordo.button_alias}
                             </Text>
                         </View>
@@ -351,9 +355,14 @@ export default function (props) {
                                 activeStrokeColor={
                                     temp_color
                                 }
+                                progressValueFontSize={20}
                                 activeStrokeSecondaryColor={palette.red}
                                 maxValue={40}
                                 inActiveStrokeOpacity={0.7}
+                                progressFormatter={(value) => {
+                                    'worklet';
+                                    return value.toFixed(1);
+                                }}
                             />
                         </View>
                         : <></>
@@ -373,7 +382,7 @@ export default function (props) {
     }
 
     const renderPanel = (feedback, alias, name, feedback_status, mac_address, ambient, device, color, offline) => {
-        startAnimation()
+
 
         var falha_bomba_1 = '0';
         var falha_bomba_2 = '0';
@@ -407,9 +416,18 @@ export default function (props) {
             }
         }
 
+
+
+
+
         return (
             <View>
+                {/* <Text style={{ color: palette.white }}>
+                    {bomba_1.status.toString() === '1' ? 'Ligado' : 'Desligado'}
+                </Text> */}
+
                 <View style={{ display: 'flex', flexDirection: 'row' }}>
+
                     {falha_de_motor
                         ? <>
                             <View style={falha_de_motor.status.toString() === '0' ? styles.defaultOpt : styles.redOpt}>
@@ -632,7 +650,7 @@ export default function (props) {
 
                     {extravasao
                         ? <>
-                            <View style={extravasao.status.toString() === '0' ? styles.defaultOpt : styles.greenOpt}>
+                            <View style={extravasao.status.toString() === '0' ? styles.defaultOpt : styles.redOpt}>
                                 {extravasao.status.toString() === '0'
                                     ? <MaterialCommunityIcons
                                         name={'waterfall'}
@@ -643,7 +661,7 @@ export default function (props) {
                                         <MaterialCommunityIcons
                                             name={'waterfall'}
                                             size={30}
-                                            color={palette.lightGreen}
+                                            color={palette.orange}
                                         />
                                     </Blink>
                                 }
@@ -652,7 +670,7 @@ export default function (props) {
                                     ? <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 11, textAlign: 'center' }}>
                                         {extravasao.button_alias}
                                     </Text>
-                                    : <Text style={{ color: palette.lightGreen, fontWeight: 'bold', fontSize: 11, textAlign: 'center' }}>
+                                    : <Text style={{ color: palette.orange, fontWeight: 'bold', fontSize: 11, textAlign: 'center' }}>
                                         {extravasao.button_alias}
                                     </Text>
                                 }
@@ -672,6 +690,7 @@ export default function (props) {
                         </View>
 
                         <View>
+
                             <Animated.View style={bomba_1.status.toString() === '1' ? animatedStyles : false} >
                                 <MaterialCommunityIcons
                                     name={'cog'}
@@ -680,6 +699,7 @@ export default function (props) {
                                     style={{ marginTop: 10, marginBottom: 10 }}
                                 />
                             </Animated.View>
+
                         </View>
 
                         {falha_bomba_1 === '1'
@@ -770,8 +790,6 @@ export default function (props) {
     }
 
     const sendCommand = (status) => {
-
-
         setLoadingCommand(true)
 
         var command = 'GP1'
@@ -799,15 +817,22 @@ export default function (props) {
         <SafeAreaView style={styles.safeArea} forceInset={{ top: 'always' }}>
             <TopHeader />
 
-            <StatusBar
-                barStyle={'light-content'}
-            />
-
             <ScrollView style={{ marginBottom: insets.top }}>
+                <View style={{width: 40, height: 40, display: 'none'}}>
+                    <Animated.View style={animatedStyles} >
+                        <MaterialCommunityIcons
+                            name={'cog'}
+                            size={40}
+                            color={palette.lightGreen}
+                            style={{ marginTop: 10, marginBottom: 10 }}
+                        />
+                    </Animated.View>
+                </View>
+
 
                 <View style={styles.nameContainer}>
                     <View style={{ display: 'flex', width: '15%', justifyContent: 'center', alignItems: 'center', marginLeft: 20 }}>
-                        <TouchableOpacity style={{ backgroundColor: palette.gray, borderRadius: '50%', height: 50, width: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('BottomProfile')}>
+                        <TouchableOpacity style={{ backgroundColor: palette.gray, borderRadius: 50, height: 50, width: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('BottomProfile')}>
                             <Text style={{ color: 'white', fontWeight: 'bold', textTransform: 'uppercase' }}>
                                 {userData ? userData.name[0] + userData.name[1] : ''}
                             </Text>
@@ -842,7 +867,7 @@ export default function (props) {
                     </View>
 
                     <View style={{ width: '20%', height: '100%', padding: 5 }}>
-                        <TouchableOpacity onPress={() => navigation.navigate('ReportsStackNavigator')} style={{ borderRadius: 8, backgroundColor: palette.gray, height: '100%' }}>
+                        <TouchableOpacity onPress={() => navigation.navigate('NotificationsStackNavigator')} style={{ borderRadius: 8, backgroundColor: palette.gray, height: '100%' }}>
                             <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 15 }}>
                                 <MaterialIcons name={'bar-chart'} size={38} color={palette.lightGreen} />
                             </View>
@@ -880,7 +905,7 @@ export default function (props) {
                         </TouchableOpacity>
                     </View>
                     <View style={{ width: '20%', height: '100%', padding: 5 }}>
-                        <TouchableOpacity onPress={() => navigation.navigate('SettingsStackNavigator')} style={{ borderRadius: 8, backgroundColor: palette.gray, height: '100%' }}>
+                        <TouchableOpacity onPress={() => navigation.navigate('FaqStackNavigator')} style={{ borderRadius: 8, backgroundColor: palette.gray, height: '100%' }}>
                             <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 15 }}>
                                 <MaterialIcons name={'settings'} size={38} color={palette.lightGreen} />
                             </View>
@@ -906,7 +931,7 @@ export default function (props) {
                         </Text>
                     </View>
                     : <>
-                  
+
                         {ambients ? ambients.map((row, index) => {
                             return (
                                 <View
@@ -920,7 +945,7 @@ export default function (props) {
                                         </Text>
                                     </View>
 
-                                    <View style={{ marginLeft: 10, marginRight: 10 }}>
+                                    <View style={{ marginLeft: 10, marginRight: 10, paddingBottom: 20 }}>
                                         {row.devices.map((r, i) => {
                                             return (
                                                 <View key={i} style={{ borderWidth: 1, borderColor: palette.borderGray, borderRadius: 5, padding: 10, marginTop: 10, marginBottom: 10 }}>
@@ -962,8 +987,8 @@ export default function (props) {
                                                         ? <>
 
                                                             {loadingCommand
-                                                                ? <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 2, top: 42.3}}>
-                                                                    <View style={{ width: 85, height: 85,  borderRadius: '50%', position: 'absolute', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', opacity: 0.7 }}>
+                                                                ? <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 2, top: 42.3 }}>
+                                                                    <View style={{ width: 85, height: 85, borderRadius: 50, position: 'absolute', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', opacity: 0.7 }}>
                                                                         <ActivityIndicator color={'white'} />
 
                                                                     </View>
@@ -975,8 +1000,8 @@ export default function (props) {
                                                                 <View style={{
                                                                     display: 'flex', justifyContent: 'center', alignItems: 'center'
                                                                 }}>
-                                                                    <View style={{ height: 85, width: 85, borderRadius: '50%', backgroundColor: r.status === 1 ? palette.darkGray : palette.lightGreen, display: 'flex', justifyContent: 'center', alignItems: 'center', opacity: r.status === 1 ? 0.5 : 1 }}>
-                                                                        <View style={{ height: 80, width: 80, borderRadius: '50%', backgroundColor: palette.darkGray, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                                                    <View style={{ height: 85, width: 85, borderRadius: 50, backgroundColor: r.status === 1 ? palette.darkGray : palette.lightGreen, display: 'flex', justifyContent: 'center', alignItems: 'center', opacity: r.status === 1 ? 0.5 : 1 }}>
+                                                                        <View style={{ height: 80, width: 80, borderRadius: 50, backgroundColor: palette.darkGray, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                                                             <MaterialCommunityIcons
                                                                                 name={r.status === 1 ? 'lightbulb-off-outline' : 'lightbulb-on-outline'}
                                                                                 size={40}
@@ -1005,7 +1030,7 @@ export default function (props) {
                                     </View>
                                 </View>
                             )
-                        }) : false }
+                        }) : false}
                         {/* <View >
 
                         </View> */}

@@ -82,7 +82,7 @@ export default function (props) {
 
     return (
         <View style={{ flex: 1, backgroundColor: palette.darkGray }}>
-            <StatusBar style={isDrawerOpen ? 'light' : 'dark'} />
+            {/* <StatusBar style={isDrawerOpen ? 'light' : 'dark'} /> */}
             <DrawerContentScrollView {...props}>
 
                 {/* LOGO */}
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: palette.gray,
-        borderRadius: '50%'
+        borderRadius: 50
     },
 
     userNameContainer: {

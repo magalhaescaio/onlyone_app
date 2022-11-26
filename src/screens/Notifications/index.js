@@ -96,7 +96,7 @@ export default function (props) {
                                     <View key={index} style={{ borderBottomWidth: 1, borderColor: 'white', minHeight: 50, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                         <View style={{ display: 'flex', flexDirection: 'row', marginTop: 10 }}>
                                             <View style={{ width: '10%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                                <View style={{ width: 30, height: 30, backgroundColor: palette.gray, borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                                <View style={{ width: 30, height: 30, backgroundColor: palette.gray, borderRadius: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                                     <Text style={{ color: 'white', fontWeight: 'bold' }}>ON</Text>
                                                 </View>
                                             </View>

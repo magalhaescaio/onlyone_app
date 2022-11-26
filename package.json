@@ -17,7 +17,7 @@
     "expo": "^47.0.0",
     "expo-checkbox": "~2.2.2",
     "expo-notifications": "~0.17.0",
-    "expo-splash-screen": "~0.17.4",
+    "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
     "react-dom": "18.1.0",

@@ -17,7 +17,7 @@ import { palette } from "../../constants/colors"
 export default function LoginScreen() {
     const { loginUser } = useContext(AuthContext)
 
-    const [email, setEmail] = useState('developer.caio@gmail.com')
+    const [email, setEmail] = useState('sistema@onlyone.ind.br')
     const [password, setPassword] = useState('123456')
     const [passwordVisible, setPasswordVisible] = useState()
     const [rememberMe, setRememberMe] = useState(false)
@@ -65,6 +65,17 @@ export default function LoginScreen() {
 
         } catch (error) {
             setLoading(false)
+
+            Alert.alert(
+				"Não foi possível efetuar login",
+				"Verifique os campos de e-mail e senha e tente novamente",
+				[
+					{
+						text: "Fechar",
+						style: "cancel"
+					}
+				]
+			)
         }
     }
 

@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
-import { View, StatusBar } from 'react-native'
+import { View } from 'react-native'
 import * as SplashScreen from 'expo-splash-screen'
 
 import AuthContext from './src/context/Auth'
 import { getData, deleteData } from './src/functions/store'
 import UnauthenticatedNavigation from './src/routes/UnauthenticatedNavigation'
 import AuthenticatedNavigation from './src/routes/AuthenticatedNavigation'
+import { StatusBar } from 'expo-status-bar'
 
 // import UnauthenticatedNavigation from './src/routes/UnauthenticatedNavigation'
 
@@ -72,9 +73,9 @@ export default function App() {
 			loginUser,
 			logoutUser
 		}}>
-			<StatusBar
-				barStyle={'light-content'}
-			/>
+			
+			<StatusBar style="light" />
+
 			<View onLayout={onLayoutRootView} />
 
 			{authenticated
